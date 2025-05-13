@@ -8,6 +8,7 @@ import { AuthService } from "@/services/AuthService";
 import { useState } from "react";
 import { ButtonLoading } from "./ButtonLoading";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export default function LoginForm({
   className,
@@ -26,7 +27,7 @@ export default function LoginForm({
   });
 
   const [isProcessing, setIsProcessing] = useState(false);
-
+  const navigate = useNavigate();
   const authService = new AuthService();
 
   const onSubmit = async (data: LoginModel) => {
@@ -36,6 +37,7 @@ export default function LoginForm({
 
       console.log(res);
       toast.success("Successfully logged in!");
+      navigate("/home");
     } catch (error) {
       console.error(error);
       toast.error("Failed to log in");
