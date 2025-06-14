@@ -1,3 +1,4 @@
+import { http } from "./axios";
 import { BaseService } from "./BaseService";
 
 interface LoginRequest {
@@ -13,7 +14,7 @@ interface LoginResponse {
 }
 export class AuthService extends BaseService {
   constructor() {
-    super();
+    super(http);
   }
 
   async login(payload: LoginRequest): Promise<LoginResponse> {

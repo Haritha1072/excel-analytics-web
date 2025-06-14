@@ -15,13 +15,11 @@ import {
 } from "@/components/ui/popover";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { PiUserCircleDuotone } from "react-icons/pi";
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 export default function HomePage() {
   const navigate = useNavigate();
   const handleLogout = () => {
-    // Perform logout logic here
-    // For example, clear user session, redirect to login page, etc.
     navigate("/login");
   };
   return (
@@ -32,7 +30,7 @@ export default function HomePage() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                <BreadcrumbLink>Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
@@ -66,6 +64,7 @@ export default function HomePage() {
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div> */}
+        <Outlet />
       </SidebarInset>
     </SidebarProvider>
   );

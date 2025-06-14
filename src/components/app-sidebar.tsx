@@ -12,6 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { Link } from "react-router";
 
 // This is sample data.
 const data = {
@@ -22,12 +23,11 @@ const data = {
       items: [
         {
           title: "Dashboard",
-          url: "#",
-          isActive: true,
+          url: "/home",
         },
         {
           title: "Upload Excel",
-          url: "#",
+          url: "/home/upload",
         },
       ],
     },
@@ -51,8 +51,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                    <SidebarMenuButton asChild>
+                      <Link to={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
